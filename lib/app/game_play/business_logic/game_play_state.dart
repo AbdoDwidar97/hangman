@@ -26,7 +26,20 @@ abstract class BaseGamePlayState
   String targetWord = "ORANGE";
   String topic = "Fruits";
 
+  BaseGamePlayState({
+    required this.selectedLetters,
+    required this.targetWord,
+    required this.targetWordLetterPosition,
+    required this.topic,
+    required this.failSteps,
+    required this.typedWord,
+    required this.failStepIdx,
+    required this.letters
+  });
+
   BaseGamePlayState clone();
+
+  void printState();
 }
 
 class GamePlayInitState extends BaseGamePlayState
@@ -36,13 +49,30 @@ class GamePlayInitState extends BaseGamePlayState
     required selectedLetters,
     required targetWordLetterPosition,
     required targetWord,
-    required topic
-  });
+    required topic,
+    required failStepIdx,
+    required letters,
+    required failSteps
+  }): super(
+      typedWord: typedWord,
+      selectedLetters: selectedLetters,
+      targetWordLetterPosition: targetWordLetterPosition,
+      targetWord: targetWord,
+      topic: topic,
+      failStepIdx: failStepIdx,
+      letters: letters,
+      failSteps: failSteps
+  );
 
   @override
   BaseGamePlayState clone() {
     // TODO: implement clone
     throw UnimplementedError();
+  }
+
+  @override
+  void printState() {
+    // TODO: implement printState
   }
 
 }
@@ -51,11 +81,23 @@ class GamePlayState extends BaseGamePlayState
 {
   GamePlayState({
     required typedWord,
-    selectedLetters,
-    targetWordLetterPosition,
-    targetWord,
-    topic
-  });
+     selectedLetters,
+     targetWordLetterPosition,
+     targetWord,
+     topic,
+     failStepIdx,
+     letters,
+     failSteps
+  }): super(
+      typedWord: typedWord,
+      selectedLetters: selectedLetters,
+      targetWordLetterPosition: targetWordLetterPosition,
+      targetWord: targetWord,
+      topic: topic,
+      failStepIdx: failStepIdx,
+      letters: letters,
+      failSteps: failSteps
+  );
 
   @override
   BaseGamePlayState clone()
@@ -65,7 +107,17 @@ class GamePlayState extends BaseGamePlayState
       selectedLetters: selectedLetters,
       targetWord: targetWord,
       targetWordLetterPosition: targetWordLetterPosition,
-      topic: topic
+      topic: topic,
+      letters: letters,
+      failSteps: failSteps,
+      failStepIdx: failStepIdx
     );
   }
+
+  @override
+  void printState()
+  {
+    print("typed Word: $typedWord");
+  }
+
 }

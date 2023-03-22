@@ -57,6 +57,9 @@ class GamePlayScreenState extends State<GamePlayScreen>
         create: (context) => widget._gamePlayBloc,
         child: BlocBuilder<GamePlayBloc, BaseGamePlayState>(
           builder: (context, state){
+
+            print("5555555555555555555555555");
+
             return Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
